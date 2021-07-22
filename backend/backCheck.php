@@ -1,5 +1,5 @@
 <?php
-require "databaseConnector.php";
+// BOOLEAN --> 0 false; 1 true
 
 function checkApikey($apikey){
 
