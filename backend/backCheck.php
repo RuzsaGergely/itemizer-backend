@@ -18,10 +18,22 @@ function checkApikey($apikey){
     return false;
 }
 
-function checkIfCategoryExists($category){
+function checkIfCategoryExistsByID($category){
     global $conn;
     $stmt = $conn->prepare("SELECT * FROM `categories` WHERE `id`=?");
     $stmt->bind_param("i", $category);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while($row = $result->fetch_assoc()) {
+        return true;
+    }
+    return false;
+}
+
+function checkIfCategoryExistsByName($category){
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM `categories` WHERE `category`=?");
+    $stmt->bind_param("s", $category);
     $stmt->execute();
     $result = $stmt->get_result();
     while($row = $result->fetch_assoc()) {

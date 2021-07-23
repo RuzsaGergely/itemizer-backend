@@ -50,3 +50,18 @@ You should provide a JSON body in your POST request. This should look like this:
 ```
 
 At `out_of_storage` 0 is false, everything else (higher than 0) is true. 
+
+### Create category
+
+API endpoint:
+```
+https://yourdevserver.com/index.php/category
+```
+
+You should provide a JSON body in your POST request. This should look like this:
+
+```json
+{
+  "name": "Demo category"
+}
+```

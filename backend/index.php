@@ -35,6 +35,7 @@ if($request_type == "GET"){
 } else if ($request_type == "POST"){
     switch ($url_parts[3]){
         case "category":
+            createCategory();
             break;
         case "item":
             createItem();

@@ -1,0 +1,40 @@
+# Author: Ruzsa "RuzGer" Gergely Gábor
+# API test file for itemizer-backend
+
+# Get all category
+GET {{dev-server}}/index.php/category
+api-key: {{api-key}}
+
+###
+
+# Get one specified category
+GET {{dev-server}}/index.php/category/{{category-id}}
+api-key: {{api-key}}
+
+###
+
+# Create a category
+POST {{dev-server}}/index.php/category
+api-key: {{api-key}}
+Content-Type: application/json
+
+{
+"name": "{{new-category-name}}"
+}
+
+###
+
+# Create an item
+POST {{dev-server}}/index.php/item
+api-key: {{api-key}}
+Content-Type: application/json
+
+{
+  "category": {{new-item-category}},
+  "name": "{{new-item-name}}",
+  "qty": {{new-item-qty}},
+  "note": "{{new-item-note}}",
+  "out_of_storage": {{new-item-oos}}
+}
+
+###
