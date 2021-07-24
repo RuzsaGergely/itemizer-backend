@@ -3,6 +3,7 @@ require "databaseConnector.php";
 include "backCheck.php";
 include "getEntity.php";
 include "createEntity.php";
+include "deleteEntity.php";
 include "supportFunctions.php";
 
 $url_parts = explode("/",$_SERVER["REQUEST_URI"]);
@@ -42,7 +43,22 @@ if($request_type == "GET"){
             break;
     }
 } else if ($request_type == "DELETE"){
-
+    switch ($url_parts[3]){
+        case "category":
+            if(!empty($url_parts[4])){
+                deleteCategory($url_parts[4]);
+            } else {
+                putResponse("400 Bad request", "Your query was unsuccessful. Please revise your supplied parameters!");
+            }
+            break;
+        case "item":
+            if(!empty($url_parts[4])){
+                deleteItem($url_parts[4]);
+            } else {
+                putResponse("400 Bad request", "Your query was unsuccessful. Please revise your supplied parameters!");
+            }
+            break;
+    }
 } else if ($request_type == "PUT"){
 
 } else {

@@ -65,3 +65,19 @@ You should provide a JSON body in your POST request. This should look like this:
   "name": "Demo category"
 }
 ```
+
+## DELETE requests
+
+### Delete an item
+
+```
+https://yourdevserver.com/index.php/item/<id>
+```
+
+### Delete a category
+
+```
+https://yourdevserver.com/index.php/category/<id>
+```
+
+Note that, if you delete a category, the script will check the dependency of that category. Any orphan item will be assigned with the category ID of 0.

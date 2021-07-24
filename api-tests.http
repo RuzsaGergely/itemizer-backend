@@ -13,6 +13,18 @@ api-key: {{api-key}}
 
 ###
 
+# Get all item
+GET {{dev-server}}/index.php/item
+api-key: {{api-key}}
+
+###
+
+# Get one specified item
+GET {{dev-server}}/index.php/item/{{item-id}}
+api-key: {{api-key}}
+
+###
+
 # Create a category
 POST {{dev-server}}/index.php/category
 api-key: {{api-key}}
@@ -36,5 +48,17 @@ Content-Type: application/json
   "note": "{{new-item-note}}",
   "out_of_storage": {{new-item-oos}}
 }
+
+###
+
+# Delete a category
+DELETE {{dev-server}}/index.php/category/{{category-to-delete}}
+api-key: {{api-key}}
+
+###
+
+# Delete an item
+DELETE {{dev-server}}/index.php/item/{{item-to-delete}}
+api-key: {{api-key}}
 
 ###

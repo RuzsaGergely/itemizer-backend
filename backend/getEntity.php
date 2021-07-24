@@ -1,7 +1,5 @@
 <?php
 
-require "databaseConnector.php";
-
 function getItem($id=null){
     global $conn;
     $response = [];
