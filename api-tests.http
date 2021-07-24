@@ -62,3 +62,18 @@ DELETE {{dev-server}}/index.php/item/{{item-to-delete}}
 api-key: {{api-key}}
 
 ###
+
+# Update an item
+PUT {{dev-server}}/index.php/item/{{item-id}}
+api-key: {{api-key}}
+Content-Type: application/json
+
+{
+  "category": {{update-item-category}},
+  "name": "{{update-item-name}}",
+  "qty": {{update-item-qty}},
+  "note": "{{update-item-note}}",
+  "out_of_storage": {{update-item-oos}}
+}
+
+###

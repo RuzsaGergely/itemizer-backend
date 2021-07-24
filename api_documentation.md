@@ -81,3 +81,39 @@ https://yourdevserver.com/index.php/category/<id>
 ```
 
 Note that, if you delete a category, the script will check the dependency of that category. Any orphan item will be assigned with the category ID of 0.
+
+## PUT requests
+
+### Update an item
+
+API endpoint:
+```
+https://yourdevserver.com/index.php/item/<id>
+```
+
+You should provide a JSON body in your PUT request. This should look like this:
+
+```json
+{
+  "category": 1,
+  "name": "Demo item",
+  "qty": 10,
+  "note": "",
+  "out_of_storage": 0
+}
+```
+
+### Update a category
+
+API endpoint:
+```
+https://yourdevserver.com/index.php/category/<id>
+```
+
+You should provide a JSON body in your POST request. This should look like this:
+
+```json
+{
+  "name": "Demo category"
+}
+```
