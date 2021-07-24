@@ -19,8 +19,12 @@ function updateItem($id){
         $item["out_of_storage"] = $row["out_of_storage"];
     }
 
-    if($item["category"] != $post_data["category"] && !checkIfCategoryExistsByID($item["category"])) {
-        $item["category"] = $post_data["category"];
+    if($item["category"] != $post_data["category"]) {
+        if(checkIfCategoryExistsByID($post_data["category"])){
+            $item["category"] = $post_data["category"];
+        } else {
+            $item["category"] = 0;
+        }
     } else {
         $item["category"] = 0;
     }
@@ -31,7 +35,6 @@ function updateItem($id){
 
     $stmt = $conn->prepare("UPDATE `items` SET `category`=?,`name`=?,`qty`=?,`note`=?,`out_of_storage`=? WHERE `id`=? ");
     $stmt->bind_param("isisii", $item["category"], $item["name"], $item["qty"], $item["note"], $item["out_of_storage"], $id);
-    print_r($item);
     if($stmt->execute()){
         putResponse("200 OK", "Item updated!");
     } else {
