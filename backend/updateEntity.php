@@ -33,6 +33,10 @@ function updateItem($id){
     if($item["note"] != $post_data["note"]) $item["note"] = $post_data["note"];
     if($item["out_of_storage"] != $post_data["out_of_storage"]) $item["out_of_storage"] = $post_data["out_of_storage"];
 
+    // Backchecks
+    if($item["name"] == "") $item["name"] = "NO DATA";
+    if($item["qty"] == 0) $item["qty"] = 1;
+
     $stmt = $conn->prepare("UPDATE `items` SET `category`=?,`name`=?,`qty`=?,`note`=?,`out_of_storage`=? WHERE `id`=? ");
     $stmt->bind_param("isisii", $item["category"], $item["name"], $item["qty"], $item["note"], $item["out_of_storage"], $id);
     if($stmt->execute()){
@@ -44,4 +48,18 @@ function updateItem($id){
 
 function updateCategory($id){
     global $conn;
+    $post_data = json_decode(file_get_contents('php://input'), true);
+
+    if(checkIfCategoryExistsByID($id)){
+        if($post_data["category"] == "") $post_data["category"] = "NO DATA";
+        $stmt = $conn->prepare("UPDATE `categories` SET `category`=? WHERE `id`=?");
+        $stmt->bind_param("si", $post_data["category"], $id);
+        if($stmt->execute()){
+            putResponse("200 OK", "Category updated!");
+        } else {
+            putResponse("400 Bad request", "Your query was unsuccessful. Please revise your supplied parameters!");
+        }
+    } else {
+        putResponse("400 Bad request", "Category does not exists!");
+    }
 }

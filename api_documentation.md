@@ -110,7 +110,7 @@ API endpoint:
 https://yourdevserver.com/index.php/category/<id>
 ```
 
-You should provide a JSON body in your POST request. This should look like this:
+You should provide a JSON body in your PUT request. This should look like this:
 
 ```json
 {

@@ -77,3 +77,14 @@ Content-Type: application/json
 }
 
 ###
+
+# Update a category
+PUT {{dev-server}}/index.php/category/{{category-id}}
+api-key: {{api-key}}
+Content-Type: application/json
+
+{
+  "category": "{{update-category-name}}"
+}
+
+###
